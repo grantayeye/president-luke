@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Share an idea for Luke to consider as sixth-grade president.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://agucgfzlvutxobcnraxc.supabase.co; img-src 'self'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+  <title>Luke for President | Your Ideas Matter</title>
+  <link rel="icon" href="assets/campaign-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#idea-form">Skip to the idea form</a>
+  <header class="hero">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="wordmark" href="#top" aria-label="Luke for President home">
+        <img src="assets/campaign-mark.svg" alt="" width="56" height="56">
+        <span>Luke for President</span>
+      </a>
+      <a class="nav-button" href="#idea-form">Share an idea</a>
+    </nav>
+
+    <div class="hero-content" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Sixth-grade student council</p>
+        <h1>Luke is ready to listen.</h1>
+        <p class="hero-lede">The best ideas for our grade can come from anyone. Tell Luke what would make school more fun, welcoming, or memorable.</p>
+        <a class="primary-button" href="#idea-form">Tell Luke your idea <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="poster">
+          <span class="poster-small">Vote</span>
+          <strong>LUKE</strong>
+          <span class="poster-script">for President</span>
+          <div class="poster-stars">★ ★ ★</div>
+        </div>
+      </div>
+    </div>
+    <div class="stripe" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="values" aria-labelledby="values-heading">
+      <div>
+        <p class="section-kicker">A campaign built around our grade</p>
+        <h2 id="values-heading">Every good idea deserves to be heard.</h2>
+      </div>
+      <div class="value-grid">
+        <article>
+          <span aria-hidden="true">01</span>
+          <h3>Luke will listen.</h3>
+          <p>He wants to hear what students actually care about before making plans.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">02</span>
+          <h3>Luke will include others.</h3>
+          <p>Good leadership means making room for every student and every thoughtful idea.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">03</span>
+          <h3>Luke will follow through.</h3>
+          <p>He will bring practical ideas forward and keep students informed about what happens next.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="idea-section" aria-labelledby="form-heading">
+      <div class="form-intro">
+        <p class="section-kicker">Your voice matters</p>
+        <h2 id="form-heading">What should Luke work on?</h2>
+        <p>You can suggest an event, a school-spirit idea, a way to help others, or something completely different. Luke wants to hear it.</p>
+        <div class="idea-prompts" aria-label="Idea examples">
+          <span>School spirit</span>
+          <span>Service projects</span>
+          <span>Fun events</span>
+          <span>Student life</span>
+        </div>
+      </div>
+
+      <form id="idea-form" class="idea-form" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your name <span aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" minlength="2" maxlength="80" required>
+          </div>
+          <div class="field">
+            <label for="email">Your email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="idea">Your idea <span aria-hidden="true">*</span></label>
+          <textarea id="idea" name="idea" rows="6" minlength="10" maxlength="1500" required aria-describedby="idea-help idea-count"></textarea>
+          <div class="field-help"><span id="idea-help">Please include enough detail for Luke to understand your idea.</span><span id="idea-count">0 / 1500</span></div>
+        </div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Please leave this field empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <fieldset class="captcha-box">
+          <legend>Please show that you are a person.</legend>
+          <label id="captcha-question" for="captcha-answer">Loading the math question…</label>
+          <input id="captcha-answer" name="captchaAnswer" type="text" inputmode="numeric" pattern="[0-9]{1,3}" maxlength="3" autocomplete="off" required disabled>
+        </fieldset>
+
+        <div class="consent">
+          <input id="privacy-consent" name="privacyConsent" type="checkbox" required>
+          <label for="privacy-consent">I understand that my name, email, and idea will be emailed to Luke so he can consider my response. The campaign site does not save my submission.</label>
+        </div>
+
+        <button id="submit-button" class="submit-button" type="submit">Send my idea</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
+        <p class="privacy-note">Please share campaign ideas only. Do not include private or sensitive information.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-mark"><img src="assets/campaign-mark.svg" alt="" width="42" height="42"><strong>Luke for President</strong></div>
+    <p>This is a student campaign website. It is not an official First Baptist Academy website.</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
