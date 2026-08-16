@@ -1,27 +1,3 @@
-create table if not exists public.campaign_captcha_nonces (
-  site text not null check (site in ('luke', 'annalynn')),
-  nonce uuid not null,
-  expires_at timestamptz not null,
-  used_at timestamptz,
-  created_at timestamptz not null default now(),
-  primary key (site, nonce)
-);
-
-create table if not exists public.campaign_rate_limits (
-  site text not null check (site in ('luke', 'annalynn')),
-  ip_hash text not null check (char_length(ip_hash) between 40 and 64),
-  bucket_date date not null,
-  challenge_count integer not null default 0 check (challenge_count >= 0),
-  submission_count integer not null default 0 check (submission_count >= 0),
-  updated_at timestamptz not null default now(),
-  primary key (site, ip_hash, bucket_date)
-);
-
-alter table public.campaign_captcha_nonces enable row level security;
-alter table public.campaign_rate_limits enable row level security;
-revoke all on public.campaign_captcha_nonces from public, anon, authenticated;
-revoke all on public.campaign_rate_limits from public, anon, authenticated;
-
 create or replace function public.issue_campaign_challenge(
   p_site text,
   p_nonce uuid,
@@ -98,6 +74,3 @@ revoke all on function public.issue_campaign_challenge(text, uuid, text, timesta
 revoke all on function public.consume_campaign_submission(text, uuid, text) from public, anon, authenticated;
 grant execute on function public.issue_campaign_challenge(text, uuid, text, timestamptz) to service_role;
 grant execute on function public.consume_campaign_submission(text, uuid, text) to service_role;
-
-create index if not exists campaign_captcha_nonces_expiry_idx on public.campaign_captcha_nonces (expires_at);
-create index if not exists campaign_rate_limits_date_idx on public.campaign_rate_limits (bucket_date);

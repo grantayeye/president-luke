@@ -50,8 +50,10 @@ functions and their CAPTCHA-challenge endpoints.
 - A hidden honeypot field must be empty.
 - CAPTCHA is a short-lived signed arithmetic challenge, cannot be submitted
   before a minimum human-reading delay, and its nonce is single-use.
-- Rate limit: five accepted attempts per keyed IP/site/day. The hash key is
-  derived with the server secret, so stored hashes cannot be reversed cheaply.
+- Rate limits: 300 CAPTCHA challenges and 75 accepted submissions per keyed
+  IP/site/day. The limits accommodate a shared school connection while capping
+  inbox abuse. The hash key is derived with the server secret, so stored hashes
+  cannot be reversed cheaply.
 - Responses use a small stable error set and never include stack traces,
   provider details, filesystem paths, submitted content, or destination email.
 - Resend calls have a bounded timeout and only target `api.resend.com`.
